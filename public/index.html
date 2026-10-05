@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#1E1B4B" />
+  <title>AstraMind — AI Astrology & Numerology Guidance</title>
+  <meta name="description" content="AstraMind — một hồ sơ, ba hệ thống, một người bạn đồng hành AI." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,400..800;1,400..800&subset=vietnamese&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div id="toast" class="toast"></div>
+
+  <header class="navbar">
+    <a class="brand" href="#home" onclick="showPage('home')">
+      <span class="brand-orbit">✦</span>
+      <span>Astra<span>Mind</span></span>
+    </a>
+    <nav class="nav-links">
+      <a href="#home" onclick="showPage('home')">Trang chủ</a>
+      <a href="#explore" onclick="showPage('dashboard')">Khám phá</a>
+      <a href="#pricing" onclick="showPage('pricing')">Gói dịch vụ</a>
+    </nav>
+    <div class="nav-actions">
+      <button id="navAuthBtn" class="ghost-btn" onclick="handleNavAuth()">Đăng nhập</button>
+      <button class="primary-btn small" onclick="showPage('birth')">Bắt đầu miễn phí <span>→</span></button>
+    </div>
+    <button class="mobile-menu" onclick="toggleMenu()">☰</button>
+  </header>
+
+  <main>
+    <!-- HOME -->
+    <section id="page-home" class="page active">
+      <div class="hero">
+        <div class="stars stars-a"></div>
+        <div class="stars stars-b"></div>
+        <div class="hero-copy">
+          <div class="eyebrow"><span>✦</span> SELF-DISCOVERY POWERED BY AI</div>
+          <h1>Hiểu mình hơn.<br><em>Định hướng</em> rõ hơn.</h1>
+          <p class="hero-sub">
+            Một hồ sơ. Ba hệ thống. Một người bạn đồng hành AI.
+            Kết hợp <strong>Tử vi</strong>, <strong>Bản đồ sao</strong> và <strong>Thần số học</strong>
+            để giúp bạn có thêm một góc nhìn về chính mình.
+          </p>
+          <div class="hero-actions">
+            <button class="primary-btn large" onclick="showPage('birth')">Xem hồ sơ của tôi <span>→</span></button>
+            <button class="text-btn" onclick="document.getElementById('how').scrollIntoView({behavior:'smooth'})">AstraMind hoạt động thế nào? ↓</button>
+          </div>
+          <div class="trust-row">
+            <span>✦ Miễn phí bắt đầu</span>
+            <span>🔒 Privacy-first</span>
+            <span>⚡ Kết quả nhanh</span>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <div class="orbital-system">
+            <div class="orbit orbit-1"></div>
+            <div class="orbit orbit-2"></div>
+            <div class="orbit orbit-3"></div>
+            <div class="planet p1">☽</div>
+            <div class="planet p2">✦</div>
+            <div class="planet p3">☉</div>
+            <div class="planet p4">♃</div>
+            <div class="orb-core">
+              <span>ASTRA</span>
+              <strong>✦</strong>
+              <small>YOUR MAP</small>
+            </div>
+          </div>
+          <div class="floating-card card-top">
+            <span class="mini-icon gold">✦</span>
+            <div><small>Life Path</small><strong>7</strong></div>
+          </div>
+          <div class="floating-card card-bottom">
+            <span class="mini-icon violet">☽</span>
+            <div><small>AI Insight</small><strong>You're a seeker.</strong></div>
+          </div>
+        </div>
+      </div>
+
+      <div id="how" class="section">
+        <div class="section-heading">
+          <div>
+            <span class="eyebrow">ONE PROFILE · THREE SYSTEMS</span>
+            <h2>Một nơi để <em>kết nối</em> những mảnh ghép.</h2>
+          </div>
+          <p>Không còn phải chuyển qua nhiều công cụ. AstraMind đưa những kết quả riêng lẻ về cùng một hồ sơ và để AI giúp bạn hiểu chúng.</p>
+        </div>
+        <div class="service-grid">
+          <article class="service-card zodiac-card">
+            <div class="service-icon">☯</div>
+            <div class="service-tag">EASTERN</div>
+            <h3>Tử vi</h3>
+            <p>Lá số 12 cung và các sao chính được trình bày theo cách dễ đọc, dễ khám phá.</p>
+            <button onclick="showPage('tuvi')">Khám phá →</button>
+          </article>
+          <article class="service-card astro-card">
+            <div class="service-icon">☾</div>
+            <div class="service-tag">WESTERN</div>
+            <h3>Bản đồ sao</h3>
+            <p>Sun, Moon, Ascendant, hành tinh, nhà và góc chiếu trong một bản đồ trực quan.</p>
+            <button onclick="showPage('astro')">Khám phá →</button>
+          </article>
+          <article class="service-card number-card">
+            <div class="service-icon">⑦</div>
+            <div class="service-tag">NUMEROLOGY</div>
+            <h3>Thần số học</h3>
+            <p>Những con số cốt lõi và ý nghĩa được diễn giải theo bối cảnh cá nhân của bạn.</p>
+            <button onclick="showPage('numbers')">Khám phá →</button>
+          </article>
+        </div>
+      </div>
+
+      <div class="ai-banner">
+        <div class="ai-banner-orb">✦</div>
+        <div>
+          <span class="eyebrow">MEET YOUR AI GUIDE</span>
+          <h2>“Vậy điều này <em>có nghĩa gì với tôi?</em>”</h2>
+          <p>Đó là nơi AstraMind bắt đầu. Hỏi tiếp, hỏi sâu, và giữ nguyên ngữ cảnh hồ sơ của bạn.</p>
+        </div>
+        <button class="primary-btn" onclick="showPage('chat')">Trò chuyện với AI →</button>
+      </div>
+
+      <div class="disclaimer">
+        <span>ⓘ</span>
+        <p>AstraMind là công cụ tham khảo, giải trí và tự chiêm nghiệm. Nội dung không phải dự báo khoa học và không thay thế tư vấn y tế, tài chính, pháp lý hoặc tâm lý chuyên nghiệp.</p>
+      </div>
+    </section>
+
+    <!-- BIRTH -->
+    <section id="page-birth" class="page">
+      <div class="form-page">
+        <div class="form-intro">
+          <span class="eyebrow">STEP 01 / YOUR PROFILE</span>
+          <h1>Bắt đầu với <em>chính bạn.</em></h1>
+          <p>Chỉ cần một vài thông tin cơ bản. Bạn có thể chỉnh sửa hoặc xoá dữ liệu bất cứ lúc nào.</p>
+          <div class="privacy-note">🔒 Dữ liệu ngày sinh của bạn được sử dụng để tạo hồ sơ cá nhân và không được chia sẻ công khai.</div>
+        </div>
+        <div class="birth-form-card">
+          <div class="step-progress">
+            <span class="step-dot active">1</span><i></i><span class="step-dot">2</span><i></i><span class="step-dot">3</span>
+          </div>
+          <div class="step-panel active" id="step1">
+            <label>Họ và tên</label>
+            <input id="nameInput" type="text" placeholder="Ví dụ: Phan Nguyễn Vân Nhi" />
+            <label>Ngày sinh</label>
+            <input id="dateInput" type="date" />
+            <button class="primary-btn full" onclick="nextStep(2)">Tiếp tục →</button>
+          </div>
+          <div class="step-panel" id="step2">
+            <label>Giờ sinh <span class="optional">Tuỳ chọn</span></label>
+            <input id="timeInput" type="time" />
+            <label class="checkbox-row"><input id="unknownTime" type="checkbox" onchange="toggleTime()"> Tôi không rõ giờ sinh</label>
+            <div class="field-help">Giờ sinh giúp tăng độ chính xác của Ascendant, nhà và một số yếu tố trong lá số.</div>
+            <button class="primary-btn full" onclick="nextStep(3)">Tiếp tục →</button>
+          </div>
+          <div class="step-panel" id="step3">
+            <label>Nơi sinh</label>
+            <input id="placeInput" type="text" placeholder="Ví dụ: Hà Nội, Việt Nam" />
+            <label>Giới tính <span class="optional">Tuỳ chọn</span></label>
+            <div class="gender-grid">
+              <button class="gender-btn" onclick="selectGender(this)">Nữ</button>
+              <button class="gender-btn" onclick="selectGender(this)">Nam</button>
+              <button class="gender-btn" onclick="selectGender(this)">Khác</button>
+            </div>
+            <button class="primary-btn full" onclick="createProfile()">✦ Tạo hồ sơ AstraMind</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DASHBOARD -->
+    <section id="page-dashboard" class="page">
+      <div class="dashboard-wrap">
+        <div class="dash-header">
+          <div>
+            <span class="eyebrow">YOUR ASTRA PROFILE</span>
+            <h1>Xin chào, <em id="dashName">bạn</em> ✦</h1>
+            <p>Đây là bức tranh tổng quan được tạo từ hồ sơ của bạn.</p>
+            <p id="dashMeta" class="field-help"></p>
+          </div>
+          <button class="outline-btn" onclick="showPage('settings')">⚙ Cài đặt</button>
+        </div>
+
+        <div class="profile-summary">
+          <div class="avatar-orb">✦</div>
+          <div class="profile-main">
+            <span class="small-label">YOUR CORE ENERGY</span>
+            <h2 id="summaryTitle">The Seeker</h2>
+            <p>Người tìm kiếm chiều sâu, thích hiểu bản chất vấn đề và thường cần không gian riêng để suy nghĩ.</p>
+            <div class="tag-row"><span>Curious</span><span>Intuitive</span><span>Analytical</span></div>
+          </div>
+          <div class="profile-number"><small>Life Path</small><strong id="lifePath">7</strong><span>Introspection</span></div>
+        </div>
+
+        <div class="result-grid">
+          <article class="result-card" onclick="showPage('tuvi')">
+            <div class="result-head"><span class="result-icon eastern">☯</span><span class="result-label">TỬ VI</span><span class="arrow">↗</span></div>
+            <h3>Mệnh &amp; Tài</h3>
+            <p>Thiên hướng độc lập, học sâu và phát triển tốt khi có mục tiêu rõ ràng.</p>
+            <div class="result-meter"><span style="width:78%"></span></div><small>Khám phá 12 cung →</small>
+          </article>
+          <article class="result-card" onclick="showPage('astro')">
+            <div class="result-head"><span class="result-icon western">☾</span><span class="result-label">BẢN ĐỒ SAO</span><span class="arrow">↗</span></div>
+            <h3>Sun ☉ · Moon ☽ · Rising ↑</h3>
+            <p>Sun Virgo · Moon Scorpio · Rising Capricorn</p>
+            <div class="constellation-line">✦ ── ✦ ── ◉ ── ✦</div><small>Xem bản đồ chi tiết →</small>
+          </article>
+          <article class="result-card" onclick="showPage('numbers')">
+            <div class="result-head"><span class="result-icon number">⑦</span><span class="result-label">THẦN SỐ HỌC</span><span class="arrow">↗</span></div>
+            <h3>Life Path 7</h3>
+            <p>Chiều sâu · Trí tuệ · Trực giác · Hành trình khám phá bản thân.</p>
+            <div class="number-pills"><span>7</span><span>3</span><span>11</span></div><small>Xem các chỉ số →</small>
+          </article>
+        </div>
+
+        <div class="ai-insight">
+          <div class="ai-icon">✦</div>
+          <div class="insight-content">
+            <span class="eyebrow">ASTRAMIND AI · YOUR FIRST INSIGHT</span>
+            <h2>Bạn không cần biết ngay “đáp án”. Bạn cần biết <em>mình phù hợp với câu hỏi nào.</em></h2>
+            <p>Ba hệ thống cùng gợi ra một điểm chung: bạn có xu hướng phát triển mạnh khi được tự tìm hiểu, đào sâu và biến kiến thức thành góc nhìn riêng.</p>
+            <div class="suggestion-row">
+              <button onclick="openChatWith('Tôi phù hợp với hướng nghề nghiệp nào?')">💼 Sự nghiệp</button>
+              <button onclick="openChatWith('Tình cảm của tôi có xu hướng như thế nào?')">♡ Tình cảm</button>
+              <button onclick="openChatWith('Tôi nên tập trung phát triển điều gì?')">✦ Phát triển bản thân</button>
+            </div>
+          </div>
+        </div>
+        <div class="disclaimer compact"><span>ⓘ</span><p>Nội dung chỉ mang tính tham khảo và tự chiêm nghiệm.</p></div>
+      </div>
+    </section>
+
+    <!-- ASTRO -->
+    <section id="page-astro" class="page dark-page">
+      <div class="detail-page">
+        <button class="back-btn" onclick="showPage('dashboard')">← Tổng quan</button>
+        <div class="detail-header"><span class="eyebrow">WESTERN ASTROLOGY</span><h1>Bản đồ <em>sao</em> của bạn</h1><p>Vị trí hành tinh tại thời điểm sinh — bản demo minh hoạ.</p></div>
+        <div class="astro-layout">
+          <div class="chart-container">
+            <div class="chart-ring ring-a"></div><div class="chart-ring ring-b"></div><div class="chart-ring ring-c"></div>
+            <div class="chart-cross"></div>
+            <div class="chart-zodiac">♈ ♉ ♊ ♋ ♌ ♍ ♎ ♏ ♐ ♑ ♒ ♓</div>
+            <div class="chart-center"><small>YOUR</small><strong>NATAL</strong><span>✦</span><small>CHART</small></div>
+            <div class="chart-planet cp1">☉</div><div class="chart-planet cp2">☽</div><div class="chart-planet cp3">♀</div><div class="chart-planet cp4">♄</div>
+          </div>
+          <div class="astro-info">
+            <div class="planet-card"><span>☉</span><div><small>SUN · VIRGO</small><strong>Core identity</strong><p>Tập trung, thực tế, thích cải thiện mọi thứ bằng những bước cụ thể.</p></div></div>
+            <div class="planet-card"><span>☽</span><div><small>MOON · SCORPIO</small><strong>Emotional world</strong><p>Cảm xúc sâu, trực giác mạnh và cần sự chân thành trong kết nối.</p></div></div>
+            <div class="planet-card"><span>↑</span><div><small>RISING · CAPRICORN</small><strong>How others see you</strong><p>Điềm tĩnh, có định hướng và thường tạo cảm giác đáng tin cậy.</p></div></div>
+            <button class="primary-btn full" onclick="openChatWith('Hãy giải thích bản đồ sao của tôi theo cách dễ hiểu.')">✦ Hỏi AI về bản đồ sao</button>
+          </div>
+        </div>
+        <div class="ai-mini"><span>✦</span><p><strong>AI cross-reading:</strong> Virgo Sun + Scorpio Moon + Capricorn Rising tạo nên sự kết hợp giữa tính phân tích, chiều sâu và định hướng dài hạn.</p></div>
+      </div>
+    </section>
+
+    <!-- TU VI -->
+    <section id="page-tuvi" class="page">
+      <div class="detail-page">
+        <button class="back-btn dark" onclick="showPage('dashboard')">← Tổng quan</button>
+        <div class="detail-header"><span class="eyebrow">EASTERN ASTROLOGY</span><h1>Lá số <em>Tử vi</em></h1><p>Bản demo giao diện 12 cung — engine an sao thật sẽ tích hợp ở backend.</p></div>
+        <div class="tuvi-board">
+          <div class="tuvi-center"><span>ASTRAMIND</span><strong>✦</strong><small id="tuviName">HỒ SƠ CÁ NHÂN</small></div>
+          <div class="palace p-tai"><b>TÀI BẠCH</b><span>☉ Tử Vi</span><small>Khả năng quản lý nguồn lực</small></div>
+          <div class="palace p-quan"><b>QUAN LỘC</b><span>✦ Thiên Phủ</span><small>Sự nghiệp &amp; định hướng</small></div>
+          <div class="palace p-phuc"><b>PHÚC ĐỨC</b><span>☽ Thái Âm</span><small>Nội tâm &amp; nền tảng</small></div>
+          <div class="palace p-phu"><b>PHỤ MẪU</b><span>♄ Thiên Cơ</span><small>Gia đình &amp; ảnh hưởng</small></div>
+          <div class="palace p-dien"><b>ĐIỀN TRẠCH</b><span>✦ Vũ Khúc</span><small>Môi trường sống</small></div>
+          <div class="palace p-no"><b>NÔ BỘC</b><span>☾ Thiên Đồng</span><small>Quan hệ xã hội</small></div>
+          <div class="palace p-phu-the"><b>PHU THÊ</b><span>♀ Thái Dương</span><small>Kết nối tình cảm</small></div>
+          <div class="palace p-tu"><b>TỬ TỨC</b><span>✦ Liêm Trinh</span><small>Sáng tạo &amp; thế hệ sau</small></div>
+          <div class="palace p-menh"><b>MỆNH</b><span>☯ Thiên Tướng</span><small>Bản chất &amp; khí chất</small></div>
+          <div class="palace p-huynh"><b>HUYNH ĐỆ</b><span>☽ Tham Lang</span><small>Đồng hành &amp; cạnh tranh</small></div>
+          <div class="palace p-tat"><b>TẬT ÁCH</b><span>✦ Cự Môn</span><small>Thói quen &amp; cân bằng</small></div>
+        </div>
+        <div class="explain-card"><div class="ai-icon">✦</div><div><span class="eyebrow">AI EXPLANATION</span><h3>Điểm đáng chú ý</h3><p>Lá số cho thấy thiên hướng cân bằng giữa trách nhiệm và nhu cầu tự chủ. Khi có một mục tiêu đủ ý nghĩa, bạn thường có khả năng kiên trì đào sâu thay vì chỉ tìm giải pháp nhanh.</p></div></div>
+      </div>
+    </section>
+
+    <!-- NUMBERS -->
+    <section id="page-numbers" class="page">
+      <div class="detail-page">
+        <button class="back-btn dark" onclick="showPage('dashboard')">← Tổng quan</button>
+        <div class="detail-header"><span class="eyebrow">NUMEROLOGY</span><h1>Những con số <em>cốt lõi</em></h1><p>Các chỉ số được trình bày như công cụ tự chiêm nghiệm.</p></div>
+        <div class="numbers-hero"><div class="big-number">7</div><div><span class="eyebrow">LIFE PATH</span><h2>The Seeker</h2><p>Con đường của khám phá, chiều sâu và tri thức.</p></div></div>
+        <div class="number-grid">
+          <article><span class="num">7</span><small>ĐƯỜNG ĐỜI</small><h3>Người tìm kiếm</h3><p>Thích đào sâu, quan sát và tìm ý nghĩa phía sau sự việc.</p><div class="strength">✦ Điểm mạnh: Phân tích</div></article>
+          <article><span class="num">3</span><small>SỨ MỆNH</small><h3>Người biểu đạt</h3><p>Có khả năng truyền tải ý tưởng khi tìm được cách diễn đạt phù hợp.</p><div class="strength">✦ Điểm mạnh: Sáng tạo</div></article>
+          <article><span class="num">11</span><small>LINH HỒN</small><h3>Trực giác</h3><p>Nhạy với bối cảnh và thường có nhiều tầng suy nghĩ bên trong.</p><div class="strength">✦ Điểm mạnh: Cảm nhận</div></article>
+          <article><span class="num">5</span><small>NHÂN CÁCH</small><h3>Linh hoạt</h3><p>Thích trải nghiệm, thay đổi góc nhìn và học từ thực tế.</p><div class="strength">✦ Điểm mạnh: Thích nghi</div></article>
+        </div>
+        <button class="primary-btn center-btn" onclick="openChatWith('Ba hệ thống đang nói gì giống nhau về tôi?')">✦ Để AI đối chiếu cả 3 hệ thống</button>
+      </div>
+    </section>
+
+    <!-- CHAT -->
+    <section id="page-chat" class="page chat-page">
+      <div class="chat-shell">
+        <aside class="chat-sidebar">
+          <button class="back-btn dark" onclick="showPage('dashboard')">← Hồ sơ</button>
+          <div class="chat-profile"><div class="avatar-orb small">✦</div><div><small>PROFILE</small><strong id="chatProfileName">Your Astra Profile</strong></div></div>
+          <div class="chat-history"><small>HISTORY</small><button>✦ First insight</button><button>Career direction</button><button>Self-development</button></div>
+          <div class="chat-disclaimer">ⓘ AI trả lời dựa trên dữ liệu hồ sơ đã tính và chỉ mang tính tham khảo.</div>
+        </aside>
+        <div class="chat-main">
+          <div class="chat-top"><div><span class="eyebrow">ASTRAMIND AI GUIDE</span><h2>Hỏi mình bất cứ điều gì.</h2></div><span class="online">● Online</span></div>
+          <div class="messages" id="messages">
+            <div class="message ai"><div class="msg-avatar">✦</div><div><p>Chào bạn ✦ Mình đã đọc qua hồ sơ AstraMind của bạn. Bạn muốn bắt đầu từ <strong>sự nghiệp, tình cảm</strong> hay <strong>phát triển bản thân</strong>?</p><small>AI Guide · vừa xong</small></div></div>
+          </div>
+          <div class="suggestions">
+            <button onclick="sendSuggestion('Tôi phù hợp với hướng nghề nghiệp nào?')">💼 Hướng nghề nghiệp</button>
+            <button onclick="sendSuggestion('Điểm mạnh lớn nhất của tôi là gì?')">✦ Điểm mạnh</button>
+            <button onclick="sendSuggestion('Tôi nên cải thiện điều gì?')">↗ Cải thiện bản thân</button>
+          </div>
+          <div class="chat-input"><input id="chatInput" placeholder="Viết câu hỏi của bạn..." onkeydown="if(event.key==='Enter') sendChat()"><button onclick="sendChat()">↑</button></div>
+          <p class="chat-footnote">AstraMind không đưa ra dự đoán chắc chắn về sức khoẻ, tài chính, pháp lý hoặc các vấn đề nhạy cảm.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRICING -->
+    <section id="page-pricing" class="page">
+      <div class="pricing-page">
+        <div class="detail-header center"><span class="eyebrow">SIMPLE &amp; TRANSPARENT</span><h1>Chọn mức độ <em>khám phá.</em></h1><p>Bắt đầu miễn phí. Nâng cấp khi bạn cần nhiều chiều sâu hơn.</p></div>
+        <div class="pricing-grid">
+          <article class="price-card"><span class="plan">FREE</span><h2>0đ</h2><p>Cho những lần khám phá đầu tiên.</p><ul><li>✓ Hồ sơ cá nhân</li><li>✓ 3 hệ thống cơ bản</li><li>✓ AI giới hạn mỗi ngày</li><li>✓ Lưu kết quả</li></ul><button class="outline-btn full" onclick="showPage('birth')">Bắt đầu miễn phí</button></article>
+          <article class="price-card featured"><div class="popular">PHỔ BIẾN</div><span class="plan">PLUS</span><h2>99K <small>/ tháng</small></h2><p>Cho người muốn khám phá thường xuyên.</p><ul><li>✓ Tăng giới hạn AI</li><li>✓ Lịch sử chat dài hạn</li><li>✓ Báo cáo PDF</li><li>✓ Nhắc lịch theo chu kỳ</li></ul><button class="primary-btn full" onclick="showToast('Demo: thanh toán sẽ được tích hợp ở giai đoạn thương mại hoá.')">Chọn Plus</button></article>
+          <article class="price-card"><span class="plan gold-text">PREMIUM</span><h2>199K <small>/ tháng</small></h2><p>Cho trải nghiệm cá nhân hoá sâu hơn.</p><ul><li>✓ Không giới hạn AI hợp lý</li><li>✓ Nhiều hồ sơ</li><li>✓ Báo cáo chuyên sâu</li><li>✓ So hợp hai người</li></ul><button class="outline-btn full" onclick="showToast('Demo: gói Premium sẽ mở trong roadmap.')">Chọn Premium</button></article>
+        </div>
+        <div class="credit-card"><span>✦</span><div><strong>Chỉ cần hỏi thêm?</strong><p>Mua credit AI lẻ mà không cần đăng ký gói dài hạn.</p></div><button class="text-btn" onclick="showToast('Demo: credit AI chưa kết nối thanh toán.')">Xem credit →</button></div>
+      </div>
+    </section>
+
+    <!-- SETTINGS -->
+    <section id="page-settings" class="page">
+      <div class="settings-page">
+        <button class="back-btn dark" onclick="showPage('dashboard')">← Tổng quan</button>
+        <div class="detail-header"><span class="eyebrow">PRIVACY CENTER</span><h1>Cài đặt &amp; <em>quyền riêng tư</em></h1><p>Bạn luôn kiểm soát dữ liệu của mình.</p></div>
+        <div class="settings-list">
+          <div class="setting-item"><div><strong>Hồ sơ cá nhân</strong><p>Ngày sinh, giờ sinh, nơi sinh và thông tin hồ sơ.</p></div><button class="outline-btn" onclick="showPage('birth')">Chỉnh sửa</button></div>
+          <div class="setting-item"><div><strong>Cho phép dùng dữ liệu để cải thiện sản phẩm</strong><p>Chỉ bật khi bạn đồng ý. Bạn có thể thay đổi lựa chọn bất cứ lúc nào.</p></div><label class="switch"><input type="checkbox"><span></span></label></div>
+          <div class="setting-item"><div><strong>Xuất dữ liệu</strong><p>Tải bản sao hồ sơ và lịch sử của bạn.</p></div><button class="outline-btn" onclick="downloadDemo()">Xuất dữ liệu</button></div>
+          <div class="setting-item danger"><div><strong>Xoá toàn bộ dữ liệu</strong><p>Hành động này không thể hoàn tác.</p></div><button class="danger-btn" onclick="confirmDelete()">Xoá dữ liệu</button></div>
+        </div>
+        <div class="privacy-points"><span>🔒 HTTPS/TLS</span><span>🛡 Thu thập tối thiểu</span><span>🚫 Không bán dữ liệu</span><span>✓ Quyền xoá dữ liệu</span></div>
+      </div>
+    </section>
+
+    <!-- LOGIN -->
+    <section id="page-login" class="page">
+      <div class="login-page"><div class="login-orb">✦</div><span class="eyebrow">WELCOME BACK</span><h1>Trở lại với <em>AstraMind.</em></h1><p>Tiếp tục hành trình khám phá bản thân.</p><form id="loginForm" onsubmit="event.preventDefault();login()"><input id="loginEmail" type="email" placeholder="Email" autocomplete="email" required><input id="loginPassword" type="password" placeholder="Mật khẩu (tối thiểu 6 ký tự)" autocomplete="current-password" minlength="6" required><button type="submit" class="primary-btn full">Đăng nhập →</button></form><div class="or">hoặc</div><button class="social-btn" onclick="showToast('Demo: Google login sẽ được tích hợp với Supabase Auth.')">G  Tiếp tục với Google</button><p class="switch-auth">Chưa có tài khoản? Nhập email và mật khẩu mới rồi bấm Đăng nhập để <button type="button" onclick="document.getElementById('loginEmail').focus()">tạo miễn phí</button></p></div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-brand"><span class="brand-orbit">✦</span><strong>AstraMind</strong></div>
+    <p>© 2026 AstraMind · Nhóm 5 · TINH314</p>
+    <span>Tham khảo · Tự chiêm nghiệm · Privacy-first</span>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
